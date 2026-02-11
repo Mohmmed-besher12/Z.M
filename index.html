@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجري الشخصي - إتمام الدفع</title>
+    
+    <link rel="stylesheet" href="https://cdn.moyasar.com/mpf/1.14.0/moyasar.css" />
+    
+    <style>
+        body { font-family: 'Tahoma', sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; text-align: center; }
+        .container { max-width: 500px; background: white; margin: auto; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .product-info { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .price { font-size: 24px; color: #28a745; font-weight: bold; }
+        input[type="text"] { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        #payment-section { display: none; margin-top: 20px; }
+        .btn-confirm { background-color: #007bff; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="product-info">
+            <h2>سلة المشتريات</h2>
+            <p>منتج تجريبي</p>
+            <p class="price">100.00 ريال</p>
+        </div>
+
+        <div id="customer-info">
+            <label>الاسم الكامل:</label><br>
+            <input type="text" id="customer-name-input" placeholder="اكتب اسمك هنا..." required>
+            <br>
+            <button class="btn-confirm" onclick="showPayment()">
