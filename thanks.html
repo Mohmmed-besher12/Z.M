@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تم الدفع بنجاح</title>
+    <style>
+        body { font-family: 'Tahoma', sans-serif; background-color: #f4f7f6; text-align: center; padding: 50px; }
+        .success-card { background: white; max-width: 500px; margin: auto; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .icon { font-size: 60px; color: #28a745; margin-bottom: 20px; }
+        h1 { color: #333; margin-bottom: 10px; }
+        p { color: #666; font-size: 18px; }
+        .details { background: #f8f9fa; padding: 15px; border-radius: 10px; margin-top: 20px; text-align: right; }
+        .details div { margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .label { font-weight: bold; color: #555; }
+        .btn { display: inline-block; margin-top: 25px; padding: 12px 30px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; transition: 0.3s; }
+        .btn:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+
+    <div class="success-card">
+        <div class="icon">✓</div>
+        <h1>شكراً لك!</h1>
+        <p>تمت عملية الدفع بنجاح واكتمل طلبك.</p>
+
+        <div class="details">
+            <div>
+                <span class="label">اسم العميل:</span> 
+                <span id="display-name">...</span>
+            </div>
+            <div>
+                <span class="label">رقم العملية:</span> 
+                <span id="display-id">...</span>
+            </div>
+            <div>
+                <span class="label">حالة الدفع:</span> 
+                <span style="color: green; font-weight: bold;">مقبول</span>
+            </div>
+        </div>
+
+        <a href="index.html" class="btn">العودة للمتجر</a>
+    </div>
+
+    <script>
+        // كود استخراج البيانات من الرابط (URL)
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // است
