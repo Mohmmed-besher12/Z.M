@@ -6,6 +6,8 @@
     <title>متجري الشخصي - إتمام الدفع</title>
     
     <link rel="stylesheet" href="https://cdn.moyasar.com/mpf/1.14.0/moyasar.css" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=fetch"></script>
+    <script src="https://cdn.moyasar.com/mpf/1.14.0/moyasar.js"></script>
     
     <style>
         body { font-family: 'Tahoma', sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; text-align: center; }
@@ -26,9 +28,43 @@
             <p class="price">100.00 ريال</p>
         </div>
 
-       <div id="customer-info">
-    <label>الاسم الكامل:</label><br>
-    <input type="text" id="customer-name-input" placeholder="اكتب اسمك هنا..." required>
-    <br><br>
-    <button class="btn-confirm" onclick="showPayment()">الانتقال للدفع</button>
-</div>
+        <div id="customer-info">
+            <label>الاسم الكامل:</label><br>
+            <input type="text" id="customer-name-input" placeholder="اكتب اسمك هنا..." required>
+            <br><br>
+            <button class="btn-confirm" onclick="showPayment()">الانتقال للدفع</button>
+        </div>
+
+        <div id="payment-section">
+            <h3>اختر وسيلة الدفع</h3>
+            <div class="mysr-form"></div>
+        </div>
+    </div>
+
+    <script>
+        function showPayment() {
+            const name = document.getElementById('customer-name-input').value;
+            
+            if (name.trim() === "") {
+                alert("يرجى كتابة الاسم أولاً");
+                return;
+            }
+
+            // إخفاء الاسم وإظهار الدفع
+            document.getElementById('customer-info').style.display = 'none';
+            document.getElementById('payment-section').style.display = 'block';
+
+            // تشغيل ميسر
+            Moyasar.init({
+                element: '.mysr-form',
+                amount: 10000, 
+                currency: 'SAR',
+                description: 'طلب من ' + name,
+                publishable_api_key: 'pk_live_7qskjXJ1xCkKRUUHd3Lw9QLSXNhH15v996E2uGWD', 
+                callback_url: 'https://mohmmed-besher12.github.io/Z.M/thanks.html?name=' + encodeURIComponent(name),
+                methods: ['creditcard', 'applepay', 'stcpay']
+            });
+        }
+    </script>
+</body>
+</html>
